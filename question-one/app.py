@@ -15,4 +15,6 @@ legislator_counts_df = vote_results_with_legislators_df.groupby(['legislator_id'
     .count().reset_index(name='vote_count')
 legislator_counts_df = legislator_counts_df.pivot_table(index=['legislator_id', 'name'], columns='vote_type',
                                                         values='vote_count', aggfunc=numpy.sum).reset_index()
+legislator_counts_df = legislator_counts_df.rename(columns={1: 'num_supported_bills', 2: 'num_opposed_bills'})
 
+legislator_counts_df.to_csv('legislators-support-oppose-count.csv', index=False)
