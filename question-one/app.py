@@ -1,6 +1,5 @@
 import pandas
 import numpy
-pandas.set_option('display.expand_frame_repr', False)
 
 bills_df = pandas.read_csv('../datasets/bills.csv')
 legislators_df = pandas.read_csv('../datasets/legislators.csv')
