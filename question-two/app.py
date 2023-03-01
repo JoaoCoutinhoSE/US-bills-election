@@ -26,7 +26,8 @@ bills_with_legislators_and_votes_with_votes_results_df = pandas.merge(bills_with
 bill_counts_df = bills_with_legislators_and_votes_with_votes_results_df.groupby(['bill_id',
                                                                                  'vote_type',
                                                                                  'title',
-                                                                                 'primary_sponsor'])['id'].count().reset_index()
+                                                                                 'primary_sponsor'])['id'].count().\
+    reset_index()
 bill_counts_df = bill_counts_df.pivot_table(index=['bill_id', 'title', 'primary_sponsor'],
                                             columns='vote_type', values='id').reset_index()
 bill_counts_df.columns.name = None
